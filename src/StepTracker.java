@@ -15,6 +15,17 @@ public class StepTracker {
 
 
     }
+    static double convectorKcal (int sum) {
+        double stepsKcal = 0;
+        stepsKcal = sum * 0.005;
+        return stepsKcal;
+    }
+
+    static double convectorDistants (int sum) {
+        double stepsDistants = 0;
+        stepsDistants = sum * 0.00075;
+        return stepsDistants;
+    }
 
     public void findBestSerias (int statsMounth) {
         int m = statsMounth;
@@ -40,19 +51,19 @@ public class StepTracker {
 
     class MonthData {
 
-       int[] days = new int[30] ;
+        int[] days = new int[30] ;
 
     }
 
     public void printStats (int statsMounth) {
-         int mon = statsMounth;
-         int sum = 0;
-         for ( int i = 0; i<monthToData[mon].days.length; i++ ) {
-             sum+=monthToData[mon].days[i];
-         }
-         System.out.println("Сумма пройденых шагов: " + sum);
-         System.out.println("Пройдено километров: " + (sum * 0.00075) + "км.");
-         System.out.println("Колорий сожжено: " + (sum * 0.005) + " килоколорий.");
+        int mon = statsMounth;
+        int sum = 0;
+        for ( int i = 0; i<monthToData[mon].days.length; i++ ) {
+            sum+=monthToData[mon].days[i];
+        }
+        System.out.println("Сумма пройденых шагов: " + sum);
+        System.out.println("Пройдено километров: " + convectorDistants(sum) + "км.");
+        System.out.println("Колорий сожжено: " + convectorKcal(sum) + " килоколорий.");
         for (int i = 0; i < monthToData[mon].days.length; i++) {
             System.out.println( "День " + i + ". Шаги: " + monthToData[mon].days[i] );
 
